@@ -11,6 +11,7 @@ Extract files or directories from a git repository
 ```shell script
 $ pip install git-extract --upgrade
 ```
+[Official PyPi Repository]((https://pypi.org/project/git-extract/))
 
 ## Usage
 
