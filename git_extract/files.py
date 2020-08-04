@@ -96,9 +96,10 @@ def copy_file(src: typing.Union[str, Path], dest: str, create_dest: bool = True)
 
 def copy_dir(src: typing.Union[str, Path], dest: str, create_dest: bool = True):
     dest_path = Path(dest)
+    new_dest_dir = os.path.join(dest, os.path.basename(src))
     if create_dest:
         dest_path.mkdir(parents=True, exist_ok=True)
     else:
         if not dest_path.exists():
             raise Exception('destination directory does not exist')
-    shutil.copytree(src, dest)
+    shutil.copytree(src, new_dest_dir, dirs_exist_ok=True)
