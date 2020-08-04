@@ -1,4 +1,5 @@
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![PyPI version fury.io](https://badge.fury.io/py/git-extract.svg)](https://pypi.org/project/git-extract/)
 
 # git-extract
 
