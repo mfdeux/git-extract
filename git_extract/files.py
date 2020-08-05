@@ -8,7 +8,7 @@ import git
 from git import RemoteProgress
 
 
-def download_git_repo(repo: str):
+def download_git_repo(repo: str) -> str:
     """
     Download remote git repo
     """
@@ -29,14 +29,14 @@ def download_git_repo(repo: str):
 
 
 def find_files_in_dir(
-        path: str, patterns: typing.List[str] = None, recursive: bool = False
+    path: str, patterns: typing.List[str] = None, recursive: bool = False
 ) -> typing.List[Path]:
     """
     Find specified files in directory
 
     """
     if not patterns:
-        patterns = ['*']
+        patterns = ["*"]
 
     base_dir = Path(path)
     files = []
@@ -55,14 +55,14 @@ def find_files_in_dir(
 
 
 def find_dirs_in_dir(
-        path: str, patterns: typing.List[str] = None, recursive: bool = False
+    path: str, patterns: typing.List[str] = None, recursive: bool = False
 ) -> typing.List[Path]:
     """
     Find specified files in directory
 
     """
     if not patterns:
-        patterns = ['*']
+        patterns = ["*"]
 
     base_dir = Path(path)
     dirs = []
@@ -80,26 +80,28 @@ def find_dirs_in_dir(
     return dirs
 
 
-def remove_dir(path: str):
+def remove_dir(path: str) -> None:
     shutil.rmtree(path)
 
 
-def copy_file(src: typing.Union[str, Path], dest: str, create_dest: bool = True):
+def copy_file(
+    src: typing.Union[str, Path], dest: str, create_dest: bool = True
+) -> None:
     dest_path = Path(dest)
     if create_dest:
         dest_path.mkdir(parents=True, exist_ok=True)
     else:
         if not dest_path.exists():
-            raise Exception('destination directory does not exist')
+            raise Exception("destination directory does not exist")
     shutil.copy(src, dest)
 
 
-def copy_dir(src: typing.Union[str, Path], dest: str, create_dest: bool = True):
+def copy_dir(src: typing.Union[str, Path], dest: str, create_dest: bool = True) -> None:
     dest_path = Path(dest)
     new_dest_dir = os.path.join(dest, os.path.basename(src))
     if create_dest:
         dest_path.mkdir(parents=True, exist_ok=True)
     else:
         if not dest_path.exists():
-            raise Exception('destination directory does not exist')
+            raise Exception("destination directory does not exist")
     shutil.copytree(src, new_dest_dir, dirs_exist_ok=True)
